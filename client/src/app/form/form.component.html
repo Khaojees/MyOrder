@@ -1,0 +1,40 @@
+<div mat-dialog-title>
+      <h1>Form</h1>     
+</div>
+<form [formGroup]="userForm" (ngSubmit)="onFormSubmit()">
+      <div mat-dialog-content class="content">
+            <div class="row">
+                  <mat-form-field appearance="outline">
+                        <mat-label>First Name</mat-label>
+                        <input matInput type="text" placeholder="Your name" formControlName="firstName">
+                  </mat-form-field>
+                  <mat-form-field appearance="outline">
+                        <mat-label>Last Name</mat-label>
+                        <input matInput type="text" placeholder="Your lastname" formControlName="lastName">
+                  </mat-form-field>                         
+            </div> 
+            <div class="row">
+                  <mat-form-field appearance="outline">
+                        <mat-label>Choose a date</mat-label>
+                        <input matInput [matDatepicker]="picker" formControlName="dateOfBirth">
+                        <mat-hint>MM/DD/YYYY</mat-hint>
+                        <mat-datepicker-toggle matIconSuffix [for]="picker"></mat-datepicker-toggle>
+                        <mat-datepicker #picker></mat-datepicker>
+                  </mat-form-field>
+            </div>
+            <div class="row">            
+                  <mat-radio-group formControlName="gender">
+                        <mat-label><b>Choose a gender</b></mat-label>
+                        <div>
+                              <mat-radio-button value="Male">Male</mat-radio-button>
+                              <mat-radio-button value="Femail">Female</mat-radio-button>
+                              <mat-radio-button value="Others">Others</mat-radio-button>
+                        </div>
+                  </mat-radio-group>
+            </div>
+      </div>
+      <div mat-dialog-actions class="action">
+            <button mat-raised-button type="button" [mat-dialog-close]="false">Cancel</button>
+            <button mat-raised-button color="primary" type="submit">{{data ? 'Update': 'Save'}}</button>
+      </div>
+</form>
